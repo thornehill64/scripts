@@ -10,4 +10,7 @@ if test -n dir;
 	set dir $PWD
 end
 
+echo $dir
+echo $quer
+
 find $dir -iname $quer
