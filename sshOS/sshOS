@@ -1,0 +1,57 @@
+#!/bin/fish
+
+source banner
+
+echo 'version 0.0.1'
+echo \n\n\n
+echo 'WELCOME TO tOS'
+echo 'PLEASE SELECT AN OPTION:'
+
+function menu
+
+	set menu  $argv
+	set -g lastmenu $menu
+	set -g mswitch
+
+	set_color red
+	echo \n
+
+	for var in $menu
+
+		set i (math $i + 1)
+		echo "[$i] "$var
+
+	end
+
+	set_color green
+
+	echo '[e] EXIT'
+	echo \n
+
+	read -n 1 -P 'OPTION: ' mswitch
+end
+
+while true
+
+	menu 'FILES' 'NETWORK' 'ORDNANCE'
+
+	set_color yellow
+
+	switch $mswitch
+		case 1
+			echo 'THERE ARE NO FILES TO DISPLAY'
+		case 2
+			echo 'NETWORK OFFLINE...'
+		case 3
+			echo 'LAUNCHING ORBITAL ARTILERRY ON TARGET [BIELEFELD]'
+			echo 'ERROR: TARGET [BIELEFELD] DOES NOT EXIST!'
+		case e
+			break
+		case '*'
+			echo 'INVALID OPTION'
+	end
+
+	set_color normal
+
+	echo \n
+end

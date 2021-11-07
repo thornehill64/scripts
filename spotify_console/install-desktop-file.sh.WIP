@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cinput=
+
+echo "copy spotify-tui .desktop file?"
+read -p "[y/n]:" cinput
+
+if [ $cinput = "y" ]
+then
+	
+	cp -i ./spotify-tui.desktop ~/.local/share/applications
+	echo "operation finished"
+	exit
+
+else
+	
+	echo "operation aborted"
+	exit
+	
+fi
