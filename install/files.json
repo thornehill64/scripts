@@ -1,50 +1,36 @@
 {
-"files": [
-	{
-		"name": "testfile",
-		"path": "../test/testfile",
-		"md5hash": "63329f5ad09a0a42aef7b1d9cd608608",
-		"installed": true
-	},
-
-
-
-	{
-		"name": "testfile2",
-		"path": "../test/testfile2",
-		"md5hash": "",
-		"installed": false
-	},
-
-
-	{
-		"name": "testfile3",
-		"path": "../test/testfile2",
-		"md5hash": "",
-		"installed": false
-	},
-
-
-	{
-		"name": "testfile4",
-		"path": "../test/testfile2",
-		"md5hash": "",
-		"installed": true
-	},
-
-
-	{
-		"name": "testfile5",
-		"path": "../test/testfile2",
-		"md5hash": "",
-		"installed": false
-	},
-
-	{
-		"name": "testfile6",
-		"path": "../test/testfile2",
-		"md5hash": "",
-		"installed": true
-	}
-]
+  "name": "testfile",
+  "path": "../test/testfile",
+  "md5hash": "63329f5ad09a0a42aef7b1d9cd608608",
+  "installed": true
+}
+{
+  "name": "testfile2",
+  "path": "../test/testfile2",
+  "md5hash": "",
+  "installed": true
+}
+{
+  "name": "testfile3",
+  "path": "../test/testfile2",
+  "md5hash": "",
+  "installed": true
+}
+{
+  "name": "testfile4",
+  "path": "../test/testfile2",
+  "md5hash": "",
+  "installed": true
+}
+{
+  "name": "testfile5",
+  "path": "../test/testfile2",
+  "md5hash": "",
+  "installed": true
+}
+{
+  "name": "testfile6",
+  "path": "../test/testfile2",
+  "md5hash": "",
+  "installed": true
 }

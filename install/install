@@ -10,6 +10,10 @@ function menu
 	source ../source/menu $argv
 end
 
+function prmpt
+	source ../source/prmpt $argv
+end
+
 # --- VARIABLES ---
 
 set installed_files
@@ -19,8 +23,8 @@ set not_installed_files
 
 function create_file_list
 
-	set installed_files (jq -rc '.files[] | select(.installed == true) | .name' files.json)
-	set not_installed_files (jq -rc '.files [] | select(.installed == false) | .name' files.json)
+	set installed_files (jq -rc 'select(.installed == true).name' files.json)
+	set not_installed_files (jq -rc 'select(.installed == false).name' files.json)
 
 end
 
@@ -44,16 +48,20 @@ function show_installed
 
 		set_color normal
 		echo '---------------------'
+
 end
 
 function install_file
 
 	set target $lastmenu[$mswitch]
 	echo 'Target: '$target
-	cp files.json temp.json
-	jq '.files[] | select(.name == "'$target'").installed |= true’ > temp.json
-	mv temp.json files.json
-#	rm temp.json
+	jq --arg t $target 'select(.name == $t).installed |= true' ./files.json > ./temp.json
+	if test $status -eq 0
+		mv ./temp.json ./files.json
+		rm ./temp.json
+	else
+		echo 'JQ Parsing error. Maybe files.json does not exist?'
+	end
 	create_file_list
 
 end
