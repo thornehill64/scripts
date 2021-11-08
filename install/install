@@ -29,21 +29,44 @@ function show_installed
 		set_color yellow
 		echo '--- INSTALLED ---'
 		set_color green
-		echo $installed_files
+
+		for var in $installed_files
+			echo $var
+		end
+
 		set_color yellow
-		echo \n
 		echo '--- NOT INSTALLED ---'
 		set_color red
-		echo $not_installed_files
+
+		for var in $not_installed_files
+			echo $var
+		end
+
 		set_color normal
-		echo \n
 		echo '---------------------'
+end
+
+function install_file
+
+	set target $lastmenu[$mswitch]
+	echo 'Target: '$target
+	cp files.json temp.json
+	jq '.files[] | select(.name == "'$target'").installed |= true’ > temp.json
+	mv temp.json files.json
+#	rm temp.json
+	create_file_list
+
+end
+
+function cb
+#	clear
+#	banner
 end
 
 # --- CODE ---
 
 
-banner
+cb
 
 
 # initialize file list
@@ -65,30 +88,49 @@ while true
 	switch $mswitch
 
 		case 1
+		cb
+			while true
+			cb
 			show_installed
 			menu 'INSTALL' 'UNINSTALL'
 			switch $mswitch
 
 			case 1
-				echo 'Select wich script to install'
-				menu $installed_files 'ALL'
-				switch $mswitch
-				case for var in $mswitch
-					echo 'case is '$var
-				case $mswitch[-1]
-					echo 'case is ALL'
-				case '*'
-					echo 'case is exit'
+			cb
+				set_color yellow
+				echo 'Select a script to install'
+				set_color normal
+
+				menu $not_installed_files 'ALL'
+
+				if string match -ri '\D' $mswitch
+					echo 'not a digit'
+				else if test $mswitch -eq 0
+					echo 'Option 0 is not available'
+					read
+				else if test $mswitch -le (math (count $lastmenu)-1)
+					echo 'if worked'
+					echo $lastmenu[$mswitch]
+					install_file
+				else if test $mswitch -eq (math (count $lastmenu))
+					echo 'ALL'
+					read
 				end
 			case 2
+			cb
 				echo 'uninstall'
 				menu $not_installed_files
 			case '*'
+			cb
 				break
 			end
+			end
 		case 2
-			update
+		cb
+			update_scripts
 		case '*'
+		cb
+			echo 'THANK YOU FOR TRUSTING IN THORNEHILL'
 			break
 
 	end
