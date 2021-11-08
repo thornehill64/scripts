@@ -77,6 +77,12 @@ function uninstall_file
 
 end
 
+function update_scripts
+	set_color yellow
+	echo 'NOT YET IMPLEMENTED'
+	set_color normal
+end
+
 function cb
 	clear
 	banner
@@ -129,7 +135,7 @@ while true
 				else if test $mswitch -eq (math (count $lastmenu))
 				set_color brred;
 				echo 'NOT YET IMPLEMENTET'
-				read -p ">"
+				read -P '>' 
 				set_color normal
 				end
 			case 2
@@ -147,7 +153,7 @@ while true
 				else if test $mswitch -eq (math (count $lastmenu))
 				set_color brred;
 				echo 'NOT YET IMPLEMENTET'
-				read -p ">"
+				read -P '>'
 				set_color normal
 				end
 

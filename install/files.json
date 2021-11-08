@@ -2,13 +2,13 @@
   "name": "testfile",
   "path": "../test/testfile",
   "md5hash": "63329f5ad09a0a42aef7b1d9cd608608",
-  "installed": false
+  "installed": true
 }
 {
   "name": "testfile2",
   "path": "../test/testfile2",
   "md5hash": "",
-  "installed": false
+  "installed": true
 }
 {
   "name": "testfile3",
@@ -20,7 +20,7 @@
   "name": "testfile4",
   "path": "../test/testfile2",
   "md5hash": "",
-  "installed": true
+  "installed": false
 }
 {
   "name": "testfile5",
@@ -32,5 +32,5 @@
   "name": "testfile6",
   "path": "../test/testfile2",
   "md5hash": "",
-  "installed": false
+  "installed": true
 }
