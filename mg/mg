@@ -1,0 +1,6 @@
+#!/bin/fish
+
+# Makes a dir and then places a .gitsave file inside the direcotry
+
+mkdir $argv
+touch $argv/.gitsave

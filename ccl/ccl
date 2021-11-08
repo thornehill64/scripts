@@ -1,0 +1,12 @@
+#!/bin/fish
+
+if test -z $argv
+
+	clear
+	figlet -f larry3d (whoami) | lolcat
+	cl
+else
+
+	clear
+	cl $argv
+end

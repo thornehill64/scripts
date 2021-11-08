@@ -1,0 +1,96 @@
+#!/bin/fish
+
+# --- SOURCED FILES ---
+
+function banner
+	source ../source/banner
+end
+
+function menu
+	source ../source/menu $argv
+end
+
+# --- VARIABLES ---
+
+set installed_files
+set not_installed_files
+
+# --- FUNCTIONS ---
+
+function create_file_list
+
+	set installed_files (jq -rc '.files[] | select(.installed == true) | .name' files.json)
+	set not_installed_files (jq -rc '.files [] | select(.installed == false) | .name' files.json)
+
+end
+
+function show_installed
+
+		set_color yellow
+		echo '--- INSTALLED ---'
+		set_color green
+		echo $installed_files
+		set_color yellow
+		echo \n
+		echo '--- NOT INSTALLED ---'
+		set_color red
+		echo $not_installed_files
+		set_color normal
+		echo \n
+		echo '---------------------'
+end
+
+# --- CODE ---
+
+
+banner
+
+
+# initialize file list
+create_file_list
+
+set_color yellow
+
+echo 'WELCOME TO THE KIND-OF INTERACTIVE FILE INSTALLER!'
+
+set_color normal
+echo 'What would you like to do?'
+
+while true
+
+	menu 'See managed scripts' 'Add script to installer' 'Update scripts'
+
+	echo \n
+
+	switch $mswitch
+
+		case 1
+			show_installed
+			menu 'INSTALL' 'UNINSTALL'
+			switch $mswitch
+
+			case 1
+				echo 'Select wich script to install'
+				menu $installed_files 'ALL'
+				switch $mswitch
+				case for var in $mswitch
+					echo 'case is '$var
+				case $mswitch[-1]
+					echo 'case is ALL'
+				case '*'
+					echo 'case is exit'
+				end
+			case 2
+				echo 'uninstall'
+				menu $not_installed_files
+			case '*'
+				break
+			end
+		case 2
+			update
+		case '*'
+			break
+
+	end
+
+end

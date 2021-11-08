@@ -1,0 +1,22 @@
+#!/bin/fish
+
+set menu  $argv
+set -g lastmenu $menu
+set -g mswitch
+
+set_color red
+echo \n
+
+for var in $menu
+
+	set i (math $i + 1)
+	echo "[$i] "$var
+
+end
+
+set_color green
+
+echo '[e] EXIT'
+echo \n
+
+read -n 1 -P 'OPTION: ' mswitch

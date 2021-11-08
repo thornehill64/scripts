@@ -1,6 +1,6 @@
 #!/bin/fish
 
-source banner
+source ../source/banner
 
 echo 'version 0.0.1'
 echo \n\n\n

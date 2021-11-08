@@ -11,7 +11,7 @@ getopts $argv | while read -l key value
 	end
 end
 
-read -P $P' [Y/n]:' -n 1 go
+read -P $P' [Y/n]:' go
 switch $go
 	case 'Y' 'y'
 		exit 0
