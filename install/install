@@ -53,12 +53,23 @@ end
 
 function install_file
 
-	set target $lastmenu[$mswitch]
-	echo 'Target: '$target
+	set target $argv
 	jq --arg t $target 'select(.name == $t).installed |= true' ./files.json > ./temp.json
 	if test $status -eq 0
 		mv ./temp.json ./files.json
-		rm ./temp.json
+	else
+		echo 'JQ Parsing error. Maybe files.json does not exist?'
+	end
+	create_file_list
+
+end
+
+function uninstall_file 
+
+	set target $argv
+	jq --arg t $target 'select(.name == $t).installed |= false' ./files.json > ./temp.json
+	if test $status -eq 0
+		mv ./temp.json ./files.json
 	else
 		echo 'JQ Parsing error. Maybe files.json does not exist?'
 	end
@@ -67,8 +78,8 @@ function install_file
 end
 
 function cb
-#	clear
-#	banner
+	clear
+	banner
 end
 
 # --- CODE ---
@@ -112,22 +123,34 @@ while true
 				menu $not_installed_files 'ALL'
 
 				if string match -ri '\D' $mswitch
-					echo 'not a digit'
 				else if test $mswitch -eq 0
-					echo 'Option 0 is not available'
-					read
 				else if test $mswitch -le (math (count $lastmenu)-1)
-					echo 'if worked'
-					echo $lastmenu[$mswitch]
-					install_file
+					install_file $lastmenu[$mswitch]
 				else if test $mswitch -eq (math (count $lastmenu))
-					echo 'ALL'
-					read
+				set_color brred;
+				echo 'NOT YET IMPLEMENTET'
+				read -p ">"
+				set_color normal
 				end
 			case 2
 			cb
-				echo 'uninstall'
-				menu $not_installed_files
+				set_color yellow
+				echo 'Select a script to install'
+				set_color normal
+
+				menu $installed_files 'ALL'
+
+				if string match -ri '\D' $mswitch
+				else if test $mswitch -eq 0
+				else if test $mswitch -le (math (count $lastmenu)-1)
+					uninstall_file $lastmenu[$mswitch]
+				else if test $mswitch -eq (math (count $lastmenu))
+				set_color brred;
+				echo 'NOT YET IMPLEMENTET'
+				read -p ">"
+				set_color normal
+				end
+
 			case '*'
 			cb
 				break

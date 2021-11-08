@@ -1,0 +1,55 @@
+#!/bin/fish
+
+# --- SOURCE ---
+
+function banner
+	source ../source/banner
+end
+
+function prmpt
+	source ../source/prmpt
+end
+
+# --- VARIABLES ---
+
+set varname testname
+set varcomment testcomment
+set varversion testversion
+set varpath testpath
+set varmd5hash testhash
+set varinstalled false
+
+# --- FUNCTIONS ---
+
+function makefiles
+	echo 'Set scripts directory'
+	set_color yellow
+	echo 'ATTENTION: Script assumes that target scripts are saved in a folder with the same name as the script!'
+	echo \n
+	set_color normal
+	echo 'Build files.json?'
+#	prmpt
+	if test $status -eq 0
+
+		jq -n\
+		\
+		'{"name": [$varname],\
+		"comment": $comment,\
+		"version": $version,\
+		"path": $path,\
+		"md5hash": $md5hahs,\
+		"installed": $installed\
+		}'
+
+	else if test $status - eq 1
+		echo 'Exit by user'
+		echo 'Thank you for trusting THORNEHILL'
+	else
+		echo 'ERROR'
+	end
+end
+
+# --- CODE ---
+
+
+makefiles
