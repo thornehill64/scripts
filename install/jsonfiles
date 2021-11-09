@@ -7,49 +7,90 @@ function banner
 end
 
 function prmpt
-	source ../source/prmpt
+	source ../source/prmpt $argv
 end
 
 # --- VARIABLES ---
 
-set varname testname
-set varcomment testcomment
-set varversion testversion
-set varpath testpath
-set varmd5hash testhash
+set varname
+set varcomment ""
+set varversion ""
+set varpath ""
+set varmd5sum ""
+# this var should be set to null by default
+# testing with value false until actually moving the scripts is implemented
 set varinstalled false
+
+set scriptdir './testscripts'
+set bindir './testbin'
+
+set targets
 
 # --- FUNCTIONS ---
 
 function makefiles
-	echo 'Set scripts directory'
-	set_color yellow
-	echo 'ATTENTION: Script assumes that target scripts are saved in a folder with the same name as the script!'
-	echo \n
-	set_color normal
-	echo 'Build files.json?'
-#	prmpt
-	if test $status -eq 0
 
-		jq -n\
-		\
-		'{"name": [$varname],\
-		"comment": $comment,\
-		"version": $version,\
-		"path": $path,\
-		"md5hash": $md5hahs,\
-		"installed": $installed\
-		}'
-
-	else if test $status - eq 1
-		echo 'Exit by user'
-		echo 'Thank you for trusting THORNEHILL'
-	else
-		echo 'ERROR'
+	if test -e ./temp.json
+		rm ./temp.json
 	end
+
+	set targets (exa $scriptdir)
+
+	for var in $targets
+
+		set varname $var
+		set varpath $scriptdir'/'$var'/'$var
+		set varmd5sum (md5sum $varpath | cut -f 1 -d ' ')
+
+		jq --null-input\
+		--arg name $varname\
+		--arg comment $varcomment\
+		--arg version $varversion\
+		--arg path $varpath\
+		--arg md5sum $varmd5sum\
+		--argjson installed $varinstalled\
+		\
+		'{"name": $name,
+		"comment": $comment,
+		"version": $version,
+		"path": $path,
+		"md5sum": $md5sum,
+		"installed": $installed
+		}'\
+		>> ./temp.json
+	end
+
+	mv ./temp.json ./files.json
 end
 
 # --- CODE ---
 
+banner
 
-makefiles
+set_color -o bryellow
+echo 'ATTENTION: Script assumes that target scripts are saved in a folder with the same name as the script!'
+set_color normal
+
+prmpt 'Create files.json?'
+
+if test $status -eq 0
+
+	makefiles
+
+	if test $status -eq 0
+		set_color green
+		echo 'files.json successfully created'
+		set_color normal
+	else
+		set_color red
+		echo 'An error occured!'
+		set_color normal
+	end
+
+else if test $status -eq 1
+	echo 'Exit by user'
+else
+	echo 'ERROR'
+end
+
+echo 'Thank you for trusting THORNEHILL64'

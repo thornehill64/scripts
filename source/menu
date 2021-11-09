@@ -19,4 +19,4 @@ set_color green
 echo '[e] EXIT'
 echo \n
 
-read -n 1 -P 'OPTION: ' mswitch
+read -P 'OPTION: ' mswitch

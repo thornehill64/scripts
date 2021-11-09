@@ -1,36 +1,56 @@
 {
-  "name": "testfile",
-  "path": "../test/testfile",
-  "md5hash": "63329f5ad09a0a42aef7b1d9cd608608",
-  "installed": true
+  "name": "anotherscript",
+  "comment": "",
+  "version": "",
+  "path": "./testscripts/anotherscript/anotherscript",
+  "md5sum": "bd224cbc9bcf9cff9b8f92335062446f",
+  "installed": false
+}
+{
+  "name": "testfile1",
+  "comment": "",
+  "version": "",
+  "path": "./testscripts/testfile1/testfile1",
+  "md5sum": "1108387f0b8d8915fed659b58e36d30b",
+  "installed": false
 }
 {
   "name": "testfile2",
-  "path": "../test/testfile2",
-  "md5hash": "",
+  "comment": "",
+  "version": "",
+  "path": "./testscripts/testfile2/testfile2",
+  "md5sum": "5696310791bb4531392731ea8839b68e",
   "installed": true
 }
 {
   "name": "testfile3",
-  "path": "../test/testfile2",
-  "md5hash": "",
+  "comment": "",
+  "version": "",
+  "path": "./testscripts/testfile3/testfile3",
+  "md5sum": "be5421eb0061bdfb97c7773439883d10",
   "installed": true
 }
 {
   "name": "testfile4",
-  "path": "../test/testfile2",
-  "md5hash": "",
-  "installed": false
+  "comment": "",
+  "version": "",
+  "path": "./testscripts/testfile4/testfile4",
+  "md5sum": "107759ee7667bf9fa15b13a83ad3729c",
+  "installed": true
 }
 {
   "name": "testfile5",
-  "path": "../test/testfile2",
-  "md5hash": "",
+  "comment": "",
+  "version": "",
+  "path": "./testscripts/testfile5/testfile5",
+  "md5sum": "2c8ed98a6845c35de228d3f4d4c343a6",
   "installed": false
 }
 {
   "name": "testfile6",
-  "path": "../test/testfile2",
-  "md5hash": "",
-  "installed": true
+  "comment": "",
+  "version": "",
+  "path": "./testscripts/testfile6/testfile6",
+  "md5sum": "72bba18f1b938235246827d832fff9bf",
+  "installed": false
 }

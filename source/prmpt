@@ -1,0 +1,17 @@
+#!/bin/fish
+
+set go
+set P 'Continue?'
+
+if ! set -q $argv
+	set P $argv
+end
+
+read -P $P' [Y/n]:' go
+
+switch $go
+	case 'Y' 'y'
+		exit 0
+	case '*'
+		exit 1
+end

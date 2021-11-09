@@ -167,7 +167,7 @@ while true
 			update_scripts
 		case '*'
 		cb
-			echo 'THANK YOU FOR TRUSTING IN THORNEHILL'
+			echo 'Thank you for trusting in THORNEHILL64'
 			break
 
 	end
