@@ -1,0 +1,19 @@
+#!/bin/fish
+
+set switchopen false
+set argcount 1
+
+
+if test $argv[1] = '-o'
+	set switchopen true
+	echo 'switchopen is true'
+end
+
+if test $switchopen = true -a test (count $argv) -eg 3
+	echo 'makefish can only create one file at a time!'
+else
+	mkdir ~/scripts/scripts-git/$argv[2]
+
+end
+
+
