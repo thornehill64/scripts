@@ -13,7 +13,7 @@ end
 # --- VARIABLES ---
 
 set varname
-set varcomment ""
+set vardesc ""
 set varversion ""
 set varpath ""
 set varmd5sum ""
@@ -41,17 +41,22 @@ function makefiles
 		set varname $var
 		set varpath $scriptdir'/'$var'/'$var
 		set varmd5sum (md5sum $varpath | cut -f 1 -d ' ')
+		if test -e $scriptdir'/'$var'/'README.md
+			set vardesc (cat $scriptdir'/'$var'/'README.md)
+		else
+			set vardesc 'No description found. You can set a description by adding a README.md to the scripts folder'
+		end
 
 		jq --null-input\
 		--arg name $varname\
-		--arg comment $varcomment\
+		--arg desc $vardesc\
 		--arg version $varversion\
 		--arg path $varpath\
 		--arg md5sum $varmd5sum\
 		--argjson installed $varinstalled\
 		\
 		'{"name": $name,
-		"comment": $comment,
+		"description": $desc,
 		"version": $version,
 		"path": $path,
 		"md5sum": $md5sum,

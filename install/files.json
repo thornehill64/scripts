@@ -1,6 +1,6 @@
 {
   "name": "anotherscript",
-  "comment": "",
+  "description": "No description found. You can set a description by adding a README.md to the scripts folder",
   "version": "",
   "path": "./testscripts/anotherscript/anotherscript",
   "md5sum": "bd224cbc9bcf9cff9b8f92335062446f",
@@ -8,7 +8,7 @@
 }
 {
   "name": "testfile1",
-  "comment": "",
+  "description": "No description found. You can set a description by adding a README.md to the scripts folder",
   "version": "",
   "path": "./testscripts/testfile1/testfile1",
   "md5sum": "1108387f0b8d8915fed659b58e36d30b",
@@ -16,31 +16,23 @@
 }
 {
   "name": "testfile2",
-  "comment": "",
+  "description": "No description found. You can set a description by adding a README.md to the scripts folder",
   "version": "",
   "path": "./testscripts/testfile2/testfile2",
   "md5sum": "5696310791bb4531392731ea8839b68e",
-  "installed": true
+  "installed": false
 }
 {
   "name": "testfile3",
-  "comment": "",
+  "description": "No description found. You can set a description by adding a README.md to the scripts folder",
   "version": "",
   "path": "./testscripts/testfile3/testfile3",
   "md5sum": "be5421eb0061bdfb97c7773439883d10",
-  "installed": true
-}
-{
-  "name": "testfile4",
-  "comment": "",
-  "version": "",
-  "path": "./testscripts/testfile4/testfile4",
-  "md5sum": "107759ee7667bf9fa15b13a83ad3729c",
-  "installed": true
+  "installed": false
 }
 {
   "name": "testfile5",
-  "comment": "",
+  "description": "No description found. You can set a description by adding a README.md to the scripts folder",
   "version": "",
   "path": "./testscripts/testfile5/testfile5",
   "md5sum": "2c8ed98a6845c35de228d3f4d4c343a6",
@@ -48,7 +40,7 @@
 }
 {
   "name": "testfile6",
-  "comment": "",
+  "description": "A testfile to test the installer script as well as acompanying scripts",
   "version": "",
   "path": "./testscripts/testfile6/testfile6",
   "md5sum": "72bba18f1b938235246827d832fff9bf",
