@@ -1,19 +1,36 @@
 #!/bin/fish
 
+set target $argv
 set switchopen false
-set argcount 1
 
+if set -q '$argv'
+	echo 'No arguments given!'
+	echo 'Please give a script name to create!'
+	echo 'You can also use the -o option to open the created file in $EDITOR'
+	exit 1
+end
 
-if test $argv[1] = '-o'
+if test (count $argv) -ge 3
+	echo 'Too many arguments! Please only specify one file to be created'
+	echo 'You can also use -o to open the created file in $EDITOR'
+	exit 1
+end
+
+if contains -- '-o' $argv
 	set switchopen true
-	echo 'switchopen is true'
+	set -e target[(contains -i -- '-o' $target)]
 end
 
-if test $switchopen = true -a test (count $argv) -eg 3
-	echo 'makefish can only create one file at a time!'
-else
-	mkdir ~/scripts/scripts-git/$argv[2]
-
+if test -e ~/scripts/scripts-git/$target
+	echo 'File already exists'
+	exit 1
 end
 
 
+
+mkdir ~/scripts/scripts-git/$target
+touch ~/scripts/scripts-git/$target
+
+if test $switchopen = 'true'
+	$EDITOR ~/scripts/scripts-git/$target
+end
