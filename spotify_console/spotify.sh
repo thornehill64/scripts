@@ -31,7 +31,7 @@ function check_spotifyd() {
 	daemonEXITSTAT=$?
 
 # In Bash vergleicht man Integer mit -Optionen und Strings mit == Operatoren.
-# Warum? Weil fick dich. Darum. -ne steht für "Not Equal".
+# Warum? Weil fuck you. Darum. -ne steht für "Not Equal".
 
 	if [ $daemonEXITSTAT -ne 0 ] 
 	then
