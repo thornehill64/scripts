@@ -28,7 +28,7 @@ end
 
 
 
-mkdir ~/scripts/scripts-git/$target
+mkdir -p ~/scripts/scripts-git/$target
 touch ~/scripts/scripts-git/$target
 
 if test $switchopen = 'true'
